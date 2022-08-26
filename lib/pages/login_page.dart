@@ -34,14 +34,14 @@ class _LoginPageState extends State<LoginPage> {
         child: Form(
           key: formKey,
           child: ListView(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             shrinkWrap: true,
             children: [
               TextFormField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  hintText: 'email address',
+                  hintText: 'E-mail Address',
                   prefixIcon: Icon(Icons.email),
                   filled: true,
                 ),
@@ -124,15 +124,15 @@ class _LoginPageState extends State<LoginPage> {
 
   authenticate() async{
     if(formKey.currentState!.validate()){
-      bool status;
       try{
         final status = await AuthService.login(emailController.text, passController.text);
         if(status){
+          if(!mounted) return;
           Navigator.pushReplacementNamed(context, LauncherPage.routeName);
         } else {
-          AuthService.logout();
+          await AuthService.logout();
           setState(() {
-            errMsg = ' You are not an Admin';
+            errMsg = 'This email does not belong to an Admin account. Please try with verified admin email.';
           });
         }
       } on FirebaseAuthException catch (e) {

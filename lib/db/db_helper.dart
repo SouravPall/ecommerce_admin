@@ -4,8 +4,8 @@ class DbHelper{
   static const String collectionAdmin = 'Admins';
   static FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  static Future<bool> isAdmin(String uid) async {
-    final snapshot = await _db.collection(collectionAdmin).doc(uid).get();
+  static Future<bool> isAdmin(String uid) async{
+    final snapshot  = await _db.collection(collectionAdmin).doc(uid).get();
     return snapshot.exists;
   }
 }
