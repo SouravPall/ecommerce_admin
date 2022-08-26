@@ -1,62 +1,30 @@
-const String productId = 'id';
-const String productName = 'name';
-const String productCategory = 'category';
-const String productDescription = 'description';
-const String productImageUrl = 'imageUrl';
-const String productSalesPrice = 'salesPrice';
-const String productFeatured = 'featured';
-const String productAvailable = 'available';
+const String categoryId = 'id';
+const String categoryName = 'name';
+const String categoryAvailable = 'available';
+const String categoryProductCount = 'productCount';
 
-class ProductModel{
-  String? id;
-  String? name;
-  String? category;
-  String? description;
-  String? imageUrl;
-  num salesPrice;
-  bool featured;
+class CategoryModel{
+  String? id, name;
+  num productCount;
   bool available;
 
-  ProductModel(
-      {this.id,
-      this.name,
-      this.category,
-      this.description,
-      this.imageUrl,
-      required this.salesPrice,
-      this.featured = true,
-      this.available = true
-      });
+  CategoryModel({this.id, this.name, this.productCount = 0, this.available = true});
 
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    return ProductModel(
-      id: map[productId],
-      name: map[productName],
-      category: map[productCategory],
-      description: map[productDescription],
-      imageUrl: map[productImageUrl],
-      salesPrice: map[productSalesPrice],
-      featured: map[productFeatured],
-      available: map[productAvailable]
-    );
-  }
   Map<String, dynamic> toMap(){
-    return <String,dynamic>{
-      productId: id,
-      productName: name,
-      productCategory: category,
-      productDescription: description,
-      productImageUrl: imageUrl,
-      productSalesPrice: salesPrice,
-      productFeatured: featured,
-      productAvailable: available,
+    return <String, dynamic> {
+      categoryId : id,
+      categoryName : name,
+      categoryProductCount : productCount,
+      categoryAvailable : available,
     };
   }
 
-  @override
-  String toString() {
-    return 'ProductModel{id: $id, name: $name, category: $category, description: $description, imageUrl: $imageUrl, salesPrice: $salesPrice, featured: $featured, available: $available}';
+  factory CategoryModel.fromMap(Map<String, dynamic> map){
+    return CategoryModel(
+      id: map[categoryId],
+      name: map[categoryName],
+      available: map[categoryAvailable],
+      productCount: map[categoryProductCount],
+    );
   }
 }
-
-
