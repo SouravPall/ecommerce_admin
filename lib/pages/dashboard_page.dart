@@ -8,6 +8,7 @@ import 'package:ecommerce_admin/pages/user_page.dart';
 import 'package:ecommerce_admin/providers/product_provider.dart';
 import 'package:ecommerce_admin/widgets/dashboard_item_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DashboardPage extends StatelessWidget {
   static const String routeName = '/dashboard-page';

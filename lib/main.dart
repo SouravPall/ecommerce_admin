@@ -1,3 +1,4 @@
+
 import 'package:ecommerce_admin/pages/category_page.dart';
 import 'package:ecommerce_admin/pages/dashboard_page.dart';
 import 'package:ecommerce_admin/pages/launcher_page.dart';
@@ -9,13 +10,21 @@ import 'package:ecommerce_admin/pages/report_page.dart';
 import 'package:ecommerce_admin/pages/settings_page.dart';
 import 'package:ecommerce_admin/pages/splash_screen_page.dart';
 import 'package:ecommerce_admin/pages/user_page.dart';
+import 'package:ecommerce_admin/providers/product_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ProductProvider()),
+    ],
+      child: const MyApp()
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
