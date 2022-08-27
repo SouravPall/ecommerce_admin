@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         UserPage.routeName: (_) => UserPage(),
         ReportPage.routeName: (_) => ReportPage(),
         SettingPage.routeName: (_) => SettingPage(),
-        NewProductPage.routeName: (_) => NewProductPage(),
+        NewProductsPage.routeName: (_) => NewProductsPage(),
       },
     );
   }

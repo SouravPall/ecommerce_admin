@@ -1,3 +1,4 @@
+import 'package:ecommerce_admin/pages/new_product_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
@@ -8,7 +9,11 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product'),
+        title: const Text('Products'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, NewProductsPage.routeName),
+        child: const Icon(Icons.add),
       ),
     );
   }

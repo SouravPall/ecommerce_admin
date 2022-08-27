@@ -28,4 +28,9 @@ class PurchaseModel {
       purchaseDateModel: dateModel.toMap(),
     };
   }
+
+  @override
+  String toString() {
+    return 'PurchaseModel{id: $id, productId: $productId, dateModel: $dateModel, price: $price, quantity: $quantity}';
+  }
 }
